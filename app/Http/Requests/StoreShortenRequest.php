@@ -24,7 +24,7 @@ class StoreShortenRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
+            'title' => 'nullable|string',
             'url' => 'required|url',
         ];
     }
