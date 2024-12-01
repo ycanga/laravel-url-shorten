@@ -37,7 +37,7 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/js/app.js'])
-    
+
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 </head>
@@ -55,15 +55,23 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#hero" class="active">{{ __('header.home') }}</a></li>
+                    <li><a href="#services">
+                            {{ __('header.services') }}
+                        </a></li>
+                    <li><a href="#pricing">
+                            {{ __('header.pricing') }}
+                        </a></li>
+                    <li><a href="#contact">
+                            {{ __('header.contact') }}
+                        </a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted" href="index.html#about">Login</a>
+            <a class="btn-getstarted" href="index.html#about">
+                {{ __('header.login') }}
+            </a>
 
         </div>
     </header>
