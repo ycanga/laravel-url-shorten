@@ -26,6 +26,7 @@ class StoreShortenRequest extends FormRequest
         return [
             'title' => 'nullable|string',
             'url' => 'required|url',
+            'domain' => 'required|string|exists:user_domains,domain',
         ];
     }
 
@@ -41,6 +42,8 @@ class StoreShortenRequest extends FormRequest
             'title.string' => 'Title must be a string',
             'url.required' => 'URL is required',
             'url.url' => 'URL must be a valid URL',
+            'domain.required' => 'Domain is required',
+            'domain.string' => 'Domain must be a string',
         ];
     }
 

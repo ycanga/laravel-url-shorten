@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('seo-desc', 'Free URL shortener to create the perfect short URLs for your business.')
+@section('seo-title', 'Free URL Shortener')
+@section('seo-keywords',
+    'url shortener, free url shortener, short url, short link, link shortener, shorten url, shorten
+    link, free short url, free short link generator, free url')
 @section('title', 'Home')
 
 @section('content')
@@ -10,39 +15,52 @@
             <div class="container" data-aos="fade-up" data-aos-delay="100">
 
                 <div class="row align-items-center">
-                    <div class="col-lg-6">
+                    <div class="col-lg-5">
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
                                 <i class="bi bi-gear-fill me-2"></i>
                                 Free and easy to use !
                             </div>
 
-                            <h1 class="mb-4">
-                                Free URL shortener to create the perfect <span class="accent-text">short URLs</span> for your business.
-                                
-                              </h1>
+                            <h3 class="mb-4">
+                                Free URL shortener to create the perfect <span class="accent-text">short URLs</span> for
+                                your business.
 
-                            <div id="app">
-                                <div class="input-group mb-3 w-75 d-flex justify-content-center">
-                                    <input v-model="url" type="text" class="form-control p-3 w-50"
-                                        placeholder="Enter your URL here" aria-label="Enter your URL here"
-                                        aria-describedby="button-addon2" @keyup.enter="sendRequest">
-                                </div>
+                            </h3>
 
-                                <div v-if="responseMessage" v-html="responseMessage" class="alert alert-info mt-3 w-75" role="alert">
+                            <div class="card rounded" id="app">
+                                <div class="card-body p-3">
+                                    <div class="mb-3">
+                                        <label for="url" class="form-label"> <i class="fa fa-link"
+                                                aria-hidden="true"></i> Shorten a long URL</label>
+                                        <input v-model="url" type="text" class="form-control p-2"
+                                            placeholder="Enter your URL here" aria-label="Enter your URL here"
+                                            aria-describedby="button-addon2" @keyup.enter="sendRequest" id="url">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="domain" class="form-label"> <i
+                                                class="fa-solid fa-wand-magic-sparkles"></i>
+                                            Select a domain
+                                        </label>
+                                        <select v-model="domain" id="domain" class="form-control p-2">
+                                            <option :value="appUrl" selected>@{{ appUrl }}</option>
+                                        </select>
+
+                                    </div>
+                                    <div v-if="responseMessage" v-html="responseMessage"
+                                        class="alert alert-info mt-3 text-start" role="alert">
+                                    </div>
+
+                                    <div class="hero-buttons">
+                                        <button @click="sendRequest" class="btn btn-primary me-0 me-sm-2 mx-1"
+                                            :disabled="isLoading">
+                                            <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status"
+                                                aria-hidden="true"></span>
+                                            Shorten URL
+                                        </button>
+                                    </div>
                                 </div>
-                            
-                                <p class="mb-4 mb-md-5">
-                                    
-                                </p>
-                            
-                                <div class="hero-buttons">
-                                    <button @click="sendRequest" class="btn btn-primary me-0 me-sm-2 mx-1" :disabled="isLoading">
-                                        <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                        Shorten URL
-                                    </button>
-                                </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -575,40 +593,9 @@
 @endsection
 
 @section('scripts')
-    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.0/dist/vue.global.js"></script>
     <script>
-        const app = Vue.createApp({
-            data() {
-                return {
-                    url: '', 
-                    isLoading: false, 
-                    responseMessage: '',
-                };
-            },
-            methods: {
-                async sendRequest() {
-                    if (!this.url) {
-                        this.responseMessage = 'Lütfen geçerli bir URL girin!';
-                        return;
-                    }
-    
-                    this.isLoading = true;
-    
-                    try {
-                        const response = await axios.post('/api/shorten', {
-                            url: this.url
-                        });
-                        this.responseMessage = `Başarıyla kısaltıldı: <a href="${response.data.data.short_url}" target="_blank">${response.data.data.short_url}</a>`;
-                    } catch (error) {
-                        this.responseMessage = 'Bir hata oluştu. Lütfen tekrar deneyin.';
-                        console.error(error);
-                    } finally {
-                        this.isLoading = false;
-                    }
-                }
-            }
-        });
-    
-        app.mount('#app');
+        window.Laravel = {
+            appUrl: "{{ env('APP_URL') }}"
+        };
     </script>
 @endsection

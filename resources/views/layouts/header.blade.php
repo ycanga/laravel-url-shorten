@@ -7,8 +7,11 @@
     <title>
         @yield('title', env('APP_NAME')) - {{ env('APP_NAME') }}
     </title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <meta name="description" content="@yield('seo-desc')">
+    <meta name="keywords" content="@yield('seo-keywords')">
+    <meta name="author" content="{{ env('APP_NAME') }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -30,6 +33,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.13/vue.cjs.min.js"
         integrity="sha512-u00eW4dmYfA0CLo6KrLetpvYZOxNJNLb9d8m3dZkUzvbZqx1uoG4CG9ChB+U2QbV5aXnHfcsIzdV3nSjKRgB8g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @vite(['resources/js/app.js'])
+    
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 </head>
