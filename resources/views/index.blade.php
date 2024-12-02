@@ -19,20 +19,19 @@
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
                             <div class="company-badge mb-4">
                                 <i class="bi bi-gear-fill me-2"></i>
-                                Free and easy to use !
+                                @lang('home/home.motto')
+
                             </div>
 
                             <h3 class="mb-4">
-                                Free URL shortener to create the perfect <span class="accent-text">short URLs</span> for
-                                your business.
-
+                                {!! __('home/home.short_desc') !!}
                             </h3>
 
-                            <div class="card rounded" id="app">
+                            <div class="card rounded">
                                 <div class="card-body p-3">
                                     <div class="mb-3">
                                         <label for="url" class="form-label"> <i class="fa fa-link"
-                                                aria-hidden="true"></i> Shorten a long URL</label>
+                                                aria-hidden="true"></i> @lang('home/home.url_label')</label>
                                         <input v-model="url" type="text" class="form-control p-2"
                                             placeholder="Enter your URL here" aria-label="Enter your URL here"
                                             aria-describedby="button-addon2" @keyup.enter="sendRequest" id="url">
@@ -41,7 +40,7 @@
                                     <div class="mb-3">
                                         <label for="domain" class="form-label"> <i
                                                 class="fa-solid fa-wand-magic-sparkles"></i>
-                                            Select a domain
+                                            @lang('home/home.domain_label')
                                         </label>
                                         <select v-model="domain" id="domain" class="form-control p-2">
                                             <option :value="appUrl" selected>@{{ appUrl }}</option>
@@ -57,7 +56,7 @@
                                             :disabled="isLoading">
                                             <span v-if="isLoading" class="spinner-border spinner-border-sm" role="status"
                                                 aria-hidden="true"></span>
-                                            Shorten URL
+                                            @lang('home/home.shorten_btn')
                                         </button>
                                     </div>
                                 </div>
@@ -78,7 +77,7 @@
                                     <img src="assets/img/avatar-5.webp" alt="Customer 5" class="avatar">
                                     <span class="avatar more">12+</span>
                                 </div>
-                                <p class="mb-0 mt-2">12,000+ url shortening operations were performed !</p>
+                                <p class="mb-0 mt-2">12,000+ @lang('home/home.url_count_desc')</p>
                             </div>
                         </div>
                     </div>
@@ -88,44 +87,44 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <i class="bi bi-trophy"></i>
+                                <i class="fa-solid fa-infinity"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>3x Won Awards</h4>
-                                <p class="mb-0">Vestibulum ante ipsum</p>
+                                <h4>@lang('home/home.stats.unlimited')</h4>
+                                <p class="mb-0">@lang('home/home.stats.unlimited_shorten')</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <i class="bi bi-briefcase"></i>
+                                <i class="fa-solid fa-bolt"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>6.5k Faucibus</h4>
-                                <p class="mb-0">Nullam quis ante</p>
+                                <h4>@lang('home/home.stats.fast')</h4>
+                                <p class="mb-0">@lang('home/home.stats.fast_shorten')</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <i class="bi bi-graph-up"></i>
+                                <i class="fa-solid fa-dollar-sign"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>80k Mauris</h4>
-                                <p class="mb-0">Etiam sit amet orci</p>
+                                <h4>@lang('home/home.stats.cheap')</h4>
+                                <p class="mb-0">@lang('home/home.stats.cheap_shorten')</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="stat-item">
                             <div class="stat-icon">
-                                <i class="bi bi-award"></i>
+                                <i class="fa-solid fa-code"></i>
                             </div>
                             <div class="stat-content">
-                                <h4>6x Phasellus</h4>
-                                <p class="mb-0">Vestibulum ante ipsum</p>
+                                <h4>@lang('home/home.stats.code')</h4>
+                                <p class="mb-0">@lang('home/home.stats.code_shorten')</p>
                             </div>
                         </div>
                     </div>
@@ -135,137 +134,13 @@
 
         </section><!-- /Hero Section -->
 
-        <!-- Stats Section -->
-        <section id="stats" class="stats section">
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Clients</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Projects</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Hours Of Support</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                    <div class="col-lg-3 col-md-6">
-                        <div class="stats-item text-center w-100 h-100">
-                            <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
-                                class="purecounter"></span>
-                            <p>Workers</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Stats Section -->
-
-        <!-- Services Section -->
-        <section id="services" class="services section light-background">
-
-            <!-- Section Title -->
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Services</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-            </div><!-- End Section Title -->
-
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-                <div class="row g-4">
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-activity"></i>
-                            </div>
-                            <div>
-                                <h3>Nesciunt Mete</h3>
-                                <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores
-                                    iure perferendis tempore et consequatur.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-diagram-3"></i>
-                            </div>
-                            <div>
-                                <h3>Eosle Commodi</h3>
-                                <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum
-                                    hic non ut nesciunt dolorem.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-easel"></i>
-                            </div>
-                            <div>
-                                <h3>Ledo Markt</h3>
-                                <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id
-                                    voluptas adipisci eos earum corrupti.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-                        <div class="service-card d-flex">
-                            <div class="icon flex-shrink-0">
-                                <i class="bi bi-clipboard-data"></i>
-                            </div>
-                            <div>
-                                <h3>Asperiores Commodit</h3>
-                                <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga
-                                    sit provident adipisci neque.</p>
-                                <a href="service-details.html" class="read-more">Read More <i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div><!-- End Service Card -->
-
-                </div>
-
-            </div>
-
-        </section><!-- /Services Section -->
-
         <!-- Pricing Section -->
         <section id="pricing" class="pricing section light-background">
 
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
-                <h2>Pricing</h2>
-                <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+                <h2>@lang('home/home.pricing')</h2>
+                <p>@lang('home/home.pricing_desc')</p>
             </div><!-- End Section Title -->
 
             <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -275,7 +150,7 @@
                     <!-- Basic Plan -->
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="pricing-card">
-                            <h3>Basic Plan</h3>
+                            <h3>@lang('home/home.plans.basic')</h3>
                             <div class="price">
                                 <span class="currency">$</span>
                                 <span class="amount">9.9</span>
@@ -301,7 +176,7 @@
                             </ul>
 
                             <a href="#" class="btn btn-primary">
-                                Buy Now
+                                @lang('home/home.buy_now')
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -311,7 +186,7 @@
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="pricing-card popular">
                             <div class="popular-badge">Most Popular</div>
-                            <h3>Standard Plan</h3>
+                            <h3>@lang('home/home.plans.standard')</h3>
                             <div class="price">
                                 <span class="currency">$</span>
                                 <span class="amount">19.9</span>
@@ -341,7 +216,7 @@
                             </ul>
 
                             <a href="#" class="btn btn-light">
-                                Buy Now
+                                @lang('home/home.buy_now')
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -350,7 +225,7 @@
                     <!-- Premium Plan -->
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="pricing-card">
-                            <h3>Premium Plan</h3>
+                            <h3>@lang('home/home.plans.premium')</h3>
                             <div class="price">
                                 <span class="currency">$</span>
                                 <span class="amount">39.9</span>
@@ -384,7 +259,7 @@
                             </ul>
 
                             <a href="#" class="btn btn-primary">
-                                Buy Now
+                                @lang('home/home.buy_now')
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -397,15 +272,14 @@
         </section><!-- /Pricing Section -->
 
         <!-- Faq Section -->
-        <section class="faq-9 faq section light-background" id="faq">
+        <section class="faq-9 faq section bg-light" id="faq">
 
             <div class="container">
                 <div class="row">
 
                     <div class="col-lg-5" data-aos="fade-up">
-                        <h2 class="faq-title">Have a question? Check out the FAQ</h2>
-                        <p class="faq-description">Maecenas tempus tellus eget condimentum rhoncus sem quam semper libero
-                            sit amet adipiscing sem neque sed ipsum.</p>
+                        <h2 class="faq-title">@lang('home/home.faq.title')</h2>
+                        <p class="faq-description">@lang('home/home.faq.desc')</p>
                         <div class="faq-arrow d-none d-lg-block" data-aos="fade-up" data-aos-delay="200">
                             <svg class="faq-arrow" width="200" height="211" viewBox="0 0 200 211" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -417,7 +291,7 @@
                     </div>
 
                     <div class="col-lg-7" data-aos="fade-up" data-aos-delay="300">
-                        <div class="faq-container">
+                        {{-- <div class="faq-container" v-for="(item, index) in faqs" :key="index">
 
                             <div class="faq-item faq-active">
                                 <h3>Non consectetur a erat nam at lectus urna duis?</h3>
@@ -429,16 +303,25 @@
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
 
-                            <div class="faq-item">
-                                <h3>Feugiat scelerisque varius morbi enim nunc faucibus?</h3>
-                                <div class="faq-content">
-                                    <p>Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum
-                                        velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend
-                                        donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in
-                                        cursus turpis massa tincidunt dui.</p>
-                                </div>
-                                <i class="faq-toggle bi bi-chevron-right"></i>
-                            </div><!-- End Faq item-->
+                            <div>
+                                <div class="faq-item">
+                                    <h3>@{{ item.question }}</h3>
+                                    <div class="faq-content">
+                                        <p>@{{ item.answer }}</p>
+                                    </div>
+                                    <i class="faq-toggle bi bi-chevron-right"></i>
+                                </div><!-- End Faq item-->
+                            </div>
+
+                            <div class="faq-item faq-active">
+                                        <h3>@{{ item.question }}</h3>
+                                        <div class="faq-content">
+                                            <p>@{{ item.answer }}</p>
+                                        </div>
+                                        <i class="faq-toggle bi bi-chevron-right"></i>
+                                    </div>
+                            
+
 
                             <div class="faq-item">
                                 <h3>Dolor sit amet consectetur adipiscing elit pellentesque?</h3>
@@ -481,7 +364,21 @@
                                 <i class="faq-toggle bi bi-chevron-right"></i>
                             </div><!-- End Faq item-->
 
-                        </div>
+                        </div> --}}
+                        <div class="accordion" id="accordionExample" v-for="(item, index) in faqs" :key="index">
+                            <div class="accordion-item">
+                              <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls=@{{item.question}}>
+                                  @{{ item.question }}
+                                </button>
+                              </h2>
+                              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    @{{ item.answer }}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     </div>
 
                 </div>
@@ -595,7 +492,8 @@
 @section('scripts')
     <script>
         window.Laravel = {
-            appUrl: "{{ env('APP_URL') }}"
+            appUrl: "{{ env('APP_URL') }}",
+            locale: "{{ app()->getLocale() }}"
         };
     </script>
 @endsection

@@ -37,33 +37,37 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/js/app.js'])
-    
+
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
 </head>
 
 <body class="index-page">
+    <div id="app">
+        <header id="header" class="header d-flex align-items-center fixed-top">
+            <div
+                class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div
-            class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+                <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
+                    <h1 class="sitename">{{ env('APP_NAME') }}</h1>
+                </a>
 
-            <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
-                <!-- <img src="assets/img/logo.png" alt=""> -->
-                <h1 class="sitename">{{ env('APP_NAME') }}</h1>
-            </a>
+                <nav id="navmenu" class="navmenu">
+                    <ul>
+                        <li><a href="#hero" class="active">{{ __('header.home') }}</a></li>
+                        <li><a href="#pricing">
+                                {{ __('header.pricing') }}
+                            </a></li>
+                        <li><a href="#contact">
+                                {{ __('header.contact') }}
+                            </a></li>
+                    </ul>
+                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+                </nav>
 
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                    <li><a href="#hero" class="active">Home</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
+                <a class="btn-getstarted" href="index.html#about">
+                    {{ __('header.login') }}
+                </a>
 
-            <a class="btn-getstarted" href="index.html#about">Login</a>
-
-        </div>
-    </header>
+            </div>
+        </header>
