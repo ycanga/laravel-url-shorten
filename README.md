@@ -1,6 +1,6 @@
 1 - docker compose up -d --build
 
-2 - docker exec -it laravel_app bash
+2 - docker exec -it url_shortener_app bash
 3 - composer install
 4 - php artisan key:generate
 5 - php artisan migrate
