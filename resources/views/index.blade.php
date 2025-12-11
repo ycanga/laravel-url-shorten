@@ -20,7 +20,6 @@
                             <div class="company-badge mb-4">
                                 <i class="bi bi-gear-fill me-2"></i>
                                 @lang('home/home.motto')
-
                             </div>
 
                             <h3 class="mb-4">

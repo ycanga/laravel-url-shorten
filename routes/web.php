@@ -16,3 +16,7 @@ Route::get('locale/{locale}', function ($locale) {
     session()->put('locale', $locale);
     return redirect()->back();
 })->name('locale.change');
+
+Route::get('/example', function () {
+    return view('example');
+});

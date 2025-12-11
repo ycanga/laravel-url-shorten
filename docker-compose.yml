@@ -1,0 +1,58 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: url_shortener_app
+    volumes:
+      - ./:/var/www
+    depends_on:
+      - db
+    networks:
+      - laravel
+
+  node:
+    image: node:18
+    container_name: url_shortener_node
+    working_dir: /var/www
+    command: ["tail", "-f", "/dev/null"]
+    volumes:
+      - ./:/var/www
+    networks:
+      - laravel
+
+  webserver:
+    image: nginx:latest
+    container_name: url_shortener_nginx
+    restart: unless-stopped
+    ports:
+      - "9999:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    networks:
+      - laravel
+
+  db:
+    image: mysql:8.0
+    container_name: url_shortener_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: url_shortener
+      MYSQL_USER: url_shortener
+      MYSQL_PASSWORD: url_shortener
+    ports:
+      - "3307:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - laravel
+
+volumes:
+  dbdata:
+
+networks:
+  laravel:
