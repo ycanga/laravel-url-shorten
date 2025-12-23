@@ -55,7 +55,7 @@ const app = createApp({
             this.responseMessage = "";
 
             try {
-                const response = await axios.post("/api/shorten", {
+                const response = await axios.post("/free/shorten", {
                     url: this.url,
                     domain: this.domain,
                 });

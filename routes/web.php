@@ -3,13 +3,15 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomePageController;
-use App\Http\Controllers\ShortenController;
+use App\Http\Controllers\Api\ShortenController;
 use Illuminate\Support\Facades\Route;
 
 // Home route
 Route::get('/', [HomePageController::class, 'index'])->name('home');
 
 // Shorten URL routes
+// free to use for everyone without authentication.
+Route::post('/free/shorten', [ShortenController::class, 'store'])->name('shorten.store')->middleware('ip-control');
 
 // Locale change route
 Route::get('locale/{locale}', function ($locale) {

@@ -81,8 +81,14 @@
 Authorization: Bearer YOUR_API_KEY
 
 {
-  "url": "https://example.com"
-}</code></pre>
+    "status": "success",
+    "message": "URL created successfully",
+    "data": {
+        "title": "Example",
+        "short_url": "https://snkrn.tr/abc123",
+    }
+}
+</code></pre>
                     </div>
                 </div>
             </div>

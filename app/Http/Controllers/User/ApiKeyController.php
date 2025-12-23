@@ -33,11 +33,6 @@ class ApiKeyController extends Controller
                 'rate_limit' => 60, // 60 req/min
             ]);
 
-            // return response()->json([
-            //     'success' => true,
-            //     'api_key' => $plainKey,
-            //     'message' => 'API Key başarıyla oluşturuldu'
-            // ]);
             return response()->json([
                 'success' => true,
                 'api_key' => $plainKey,

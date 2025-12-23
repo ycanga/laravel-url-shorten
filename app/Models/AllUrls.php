@@ -16,7 +16,8 @@ class AllUrls extends Model
         'url',
         'short_url',
         'clicks',
-        'user_id'
+        'user_id',
+        'channel',
     ];
 
     public function user()

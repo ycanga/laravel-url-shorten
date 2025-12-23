@@ -23,6 +23,7 @@ class ShortenController extends Controller
                 'title' => $request->title,
                 'url' => $request->url,
                 'short_url' => $shortUrl,
+                'channel' => request()->is('api/*') ? 'api' : 'web' ?? null,
                 'user_id' => auth()->id() ?? $this->getUserIp(),
             ]);
 

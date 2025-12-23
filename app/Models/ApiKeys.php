@@ -11,4 +11,8 @@ class ApiKeys extends Model
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
+
+    protected $casts = [
+        'last_used_at' => 'datetime',
+    ];
 }
