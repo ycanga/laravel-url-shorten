@@ -7,7 +7,7 @@ use App\Models\AllUrls;
 use App\Models\UrlLogs;
 use Illuminate\Support\Facades\DB;
 
-class ShortenController extends Controller
+class WebShortenController extends Controller
 {
     public function show($shortUrl)
     {

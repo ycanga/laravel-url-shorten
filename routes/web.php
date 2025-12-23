@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\Api\ShortenController;
+use App\Http\Controllers\WebShortenController;
 use Illuminate\Support\Facades\Route;
 
 // Home route
@@ -30,4 +31,4 @@ Route::prefix('auth')->group(function () {
 require __DIR__ . '/user.php';
 
 //! KISA LİNK URL EN ALTTA OLMALI
-Route::get('/{shortUrl}', [ShortenController::class, 'show'])->name('shorten.show');
+Route::get('/{shortUrl}', [WebShortenController::class, 'show'])->name('shorten.show');
