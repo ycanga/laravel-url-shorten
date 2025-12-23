@@ -23,11 +23,6 @@ Route::prefix('auth')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login');
 
     Route::get('/register', [RegisterController::class, 'index'])->name('register');
-
-    Route::get('logout', function () {
-        auth()->logout();
-        return redirect()->route('home');
-    })->name('logout')->middleware('auth');
 });
 
 require __DIR__ . '/user.php';

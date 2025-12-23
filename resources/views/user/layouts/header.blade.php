@@ -39,6 +39,7 @@
 
     <!-- Vite JS -->
     @vite(['resources/js/app.js'])
+    @yield('styles')
 </head>
 
 <body class="index-page">
@@ -53,9 +54,11 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="{{ route('home') }}">{{ __('header.home') }}</a></li>
-                    <li><a href="#pricing">
-                            {{ __('header.pricing') }}
-                        </a></li>
+                    <li>
+                        <a href="{{ route('api.keys') }}">
+                            {{ __('header.api-keys') }}
+                        </a>
+                    </li>
                     <li><a href="#contact">
                             {{ __('header.contact') }}
                         </a></li>

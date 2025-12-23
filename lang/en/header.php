@@ -8,4 +8,5 @@ return [
     'login' => 'Login',
     'dashboard' => 'Dashboard',
     'logout' => 'Logout',
+    'api-keys' => 'API Keys',
 ];

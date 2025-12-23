@@ -1,4 +1,4 @@
-import 'bootstrap';
+import "bootstrap";
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -6,40 +6,68 @@ import 'bootstrap';
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-import axios from 'axios';
+import axios from "axios";
 window.axios = axios;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
 import Toastify from "toastify-js";
 
 window.toast = (message, type = "success") => {
-    const colors = {
-        success: "#16a34a",
-        error: "#dc2626",
-        warning: "#f59e0b",
-        info: "#2563eb",
+    const themes = {
+        success: {
+            bg: "linear-gradient(135deg, #22c55e, #16a34a)",
+            icon: "✓",
+        },
+        error: {
+            bg: "linear-gradient(135deg, #ef4444, #b91c1c)",
+            icon: "✕",
+        },
+        warning: {
+            bg: "linear-gradient(135deg, #f59e0b, #d97706)",
+            icon: "!",
+        },
+        info: {
+            bg: "linear-gradient(135deg, #3b82f6, #2563eb)",
+            icon: "i",
+        },
     };
 
+    const theme = themes[type] || themes.info;
+
     Toastify({
-        text: message,
+        text: `
+            <div style="display:flex;align-items:center;gap:10px">
+                <div style="
+                    width:28px;
+                    height:28px;
+                    border-radius:50%;
+                    background:rgba(255,255,255,.25);
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    font-weight:700">
+                    ${theme.icon}
+                </div>
+                <span>${message}</span>
+            </div>
+        `,
         duration: 3000,
-        gravity: "bottom",
+        gravity: "top",
         position: "left",
-        close: true,
+        close: false,
         stopOnFocus: true,
+        escapeMarkup: false,
         style: {
-            background: colors[type] || colors.info,
-            borderRadius: "4px",
-            padding: "8px 16px",
+            background: theme.bg,
+            borderRadius: "14px",
+            padding: "14px 18px",
             fontSize: "14px",
             fontWeight: "500",
-            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
-            
+            boxShadow: "0 12px 30px rgba(0,0,0,.18)",
         },
     }).showToast();
 };
-
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

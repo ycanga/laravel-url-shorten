@@ -69,10 +69,6 @@
     <div class="container copyright text-center mt-4">
         <p>© <span>Copyright</span> <strong class="px-1 sitename">{{ env('APP_NAME') }}</strong> <span>All Rights
                 Reserved</span></p>
-        <div class="credits">
-            <strong class="px-1 sitename">{{ env('APP_NAME') }}</strong> is a product of <a
-                href="https://4lphasoftware.com">4LPHA Software</a>.
-        </div>
     </div>
 
 </footer>

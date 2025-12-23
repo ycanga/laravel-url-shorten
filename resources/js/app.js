@@ -19,7 +19,7 @@ const app = createApp({
             domain: "",
             faqs: [],
 
-           //* LOGIN
+            //* LOGIN
             loginForm: {
                 email: "",
                 password: "",
