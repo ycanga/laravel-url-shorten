@@ -30,44 +30,56 @@
     <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.5.13/vue.cjs.min.js"
-        integrity="sha512-u00eW4dmYfA0CLo6KrLetpvYZOxNJNLb9d8m3dZkUzvbZqx1uoG4CG9ChB+U2QbV5aXnHfcsIzdV3nSjKRgB8g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @vite(['resources/js/app.js'])
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
+    <!-- Vite JS -->
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="index-page">
-    <div id="app">
-        <header id="header" class="header d-flex align-items-center fixed-top">
-            <div
-                class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div
+            class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-                <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
-                    <h1 class="sitename">{{ env('APP_NAME') }}</h1>
-                </a>
+            <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
+                <h1 class="sitename">{{ env('APP_NAME') }}</h1>
+            </a>
 
-                <nav id="navmenu" class="navmenu">
-                    <ul>
-                        <li><a href="#hero" class="active">{{ __('header.home') }}</a></li>
-                        <li><a href="#pricing">
-                                {{ __('header.pricing') }}
-                            </a></li>
-                        <li><a href="#contact">
-                                {{ __('header.contact') }}
-                            </a></li>
-                    </ul>
-                    <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-                </nav>
-
-                <a class="btn-getstarted" href="index.html#about">
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="{{ route('home') }}">{{ __('header.home') }}</a></li>
+                    <li><a href="#pricing">
+                            {{ __('header.pricing') }}
+                        </a></li>
+                    <li><a href="#contact">
+                            {{ __('header.contact') }}
+                        </a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+            @if (auth()->check())
+                <div class="row">
+                    <div class="col">
+                        <a class="btn-getstarted" href="{{ route('dashboard') }}">
+                            {{ __('header.dashboard') }}
+                        </a>
+                    </div>
+                    <div class="col-5">
+                        <a class="btn-getstarted bg-light text-dark border-2 border-black"
+                            href="{{ route('logout') }}">
+                            {{ __('header.logout') }}
+                        </a>
+                    </div>
+                </div>
+            @else
+                <a class="btn-getstarted" href="{{ route('login') }}">
                     {{ __('header.login') }}
                 </a>
-
-            </div>
-        </header>
+            @endif
+        </div>
+    </header>

@@ -11,6 +11,36 @@ window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+import Toastify from "toastify-js";
+
+window.toast = (message, type = "success") => {
+    const colors = {
+        success: "#16a34a",
+        error: "#dc2626",
+        warning: "#f59e0b",
+        info: "#2563eb",
+    };
+
+    Toastify({
+        text: message,
+        duration: 3000,
+        gravity: "bottom",
+        position: "left",
+        close: true,
+        stopOnFocus: true,
+        style: {
+            background: colors[type] || colors.info,
+            borderRadius: "4px",
+            padding: "8px 16px",
+            fontSize: "14px",
+            fontWeight: "500",
+            boxShadow: "0 2px 6px rgba(0, 0, 0, 0.15)",
+            
+        },
+    }).showToast();
+};
+
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

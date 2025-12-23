@@ -113,6 +113,7 @@ return [
     'uploaded' => ':attribute yükleme başarısız.',
     "url" => ":attribute biçimi geçersiz.",
     'uuid' => 'The :attribute must be a valid UUID.',
+    'failed' => 'Doğrulama başarısız oldu.',
 
     /*
     |--------------------------------------------------------------------------
@@ -142,6 +143,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title' => 'Başlık',
+        'url' => 'URL',
+        'domain' => 'Alan adı',
+        'name' => 'isim',
+        'email' => 'e-posta adresi',
+        'password' => 'şifre',
+        'password_confirmation' => 'şifre doğrulama',
+        'current_password' => 'mevcut şifre',
+        'new_password' => 'Yeni şifre',
+        'new_password_confirmation' => 'Yeni şifre doğrulama',
+        'remember' => 'Beni hatırla',
+        'terms' => 'Hükümler ve koşullar',
+    ],
 
 ];

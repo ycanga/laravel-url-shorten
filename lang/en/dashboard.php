@@ -1,0 +1,21 @@
+<?php
+return [
+    'dashboard' => 'Dashboard',
+    'welcome_back' => 'Welcome back, :name!',
+    'new_short_url' => 'New Short URL',
+    'total_urls' => 'Total URLs',
+    'total_clicks' => 'Total Clicks',
+    'clicks_today' => 'Clicks Today',
+    'active_domains' => 'Active Domains',
+    'your_shortened_urls' => 'Your Shortened URLs',
+    'search_url' => 'Search URL',
+    'short_url' => 'Short URL',
+    'original_url' => 'Original URL',
+    'clicks' => 'Clicks',
+    'status' => 'Status',
+    'actions' => 'Actions',
+    'previous' => 'Previous',
+    'next' => 'Next',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+];

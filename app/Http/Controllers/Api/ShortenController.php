@@ -17,25 +17,28 @@ class ShortenController extends Controller
         $request->validated();
 
         try {
+            $shortUrl = $this->generateShortUrl();
+            
             $url = AllUrls::create([
                 'title' => $request->title,
                 'url' => $request->url,
-                'short_url' => $this->generateShortUrl(),
+                'short_url' => $shortUrl,
                 'user_id' => auth()->id() ?? $this->getUserIp(),
             ]);
 
+            //! Dönen domain kontrol edilmeli.
             return response()->json([
                 'status' => 'success',
-                'message' => 'URL shortened successfully',
+                'message' => __('home/home.shorten.created'),
                 'data' => [
                     'title' => $request->title,
-                    'short_url' => env('APP_URL') . '/' . $url->short_url,
+                    'short_url' => $request->domain .'/'. $shortUrl,
                 ],
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Failed to shorten URL',
+                'message' => __('home/home.shorten.creation_failed'),
                 'error' => $e->getMessage(),
             ], 500);
         }
@@ -55,7 +58,7 @@ class ShortenController extends Controller
             if (!$url) {
                 return response()->json([
                     'status' => 'error',
-                    'message' => 'URL not found',
+                    'message' => __('home/home.shorten.not_found'),
                 ], 404);
             }
 
@@ -63,7 +66,7 @@ class ShortenController extends Controller
 
             return response()->json([
                 'status' => 'success',
-                'message' => 'URL found',
+                'message' => __('home/home.shorten.found'),
                 'data' => [
                     'title' => $url->title,
                     'url' => $url->url,
@@ -72,7 +75,7 @@ class ShortenController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Failed to find URL',
+                'message' => __('home/home.shorten.not_found'),
                 'error' => $e->getMessage(),
             ], 404);
         }
@@ -89,7 +92,7 @@ class ShortenController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'message' => 'URLs found',
+            'message' => __('home/home.shorten.found'),
             'data' => $urls,
         ], 200);
     }

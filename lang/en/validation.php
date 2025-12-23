@@ -157,6 +157,7 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
+    'failed' => 'The given data was invalid.',
 
     /*
     |--------------------------------------------------------------------------
@@ -186,6 +187,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'title' => 'title',
+        'url' => 'URL',
+        'domain' => 'domain',
+        'name' => 'name',
+        'email' => 'email address',
+        'password' => 'password',
+        'password_confirmation' => 'password confirmation',
+        'current_password' => 'current password',
+        'new_password' => 'new password',
+        'new_password_confirmation' => 'new password confirmation',
+        'remember' => 'remember me',
+        'terms' => 'terms and conditions',
+    ],
 
 ];

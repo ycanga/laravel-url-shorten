@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AllUrls;
+use App\Models\UrlLogs;
+use Illuminate\Support\Facades\DB;
 
 class ShortenController extends Controller
 {
@@ -18,9 +20,25 @@ class ShortenController extends Controller
 
             $url->increment('clicks');
 
+            //Logs can be added here
+            DB::beginTransaction();
+
+            try {
+                UrlLogs::create([
+                    'url_id' => $url->id,
+                    'browser' => request()->header('User-Agent'),
+                    'ip_address' => request()->ip(),
+                    'user_agent' => request()->header('User-Agent'),
+                ]);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                throw $e;
+            }
+
             return redirect($url->url);
         } catch (\Exception $e) {
-            return abort(500);
+            return abort(404);
         }
     }
 }

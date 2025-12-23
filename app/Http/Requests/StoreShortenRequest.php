@@ -35,17 +35,17 @@ class StoreShortenRequest extends FormRequest
      *
      * @return array<string, string>
      */
-    public function messages(): array
-    {
-        return [
-            'title.required' => 'Title is required',
-            'title.string' => 'Title must be a string',
-            'url.required' => 'URL is required',
-            'url.url' => 'URL must be a valid URL',
-            'domain.required' => 'Domain is required',
-            'domain.string' => 'Domain must be a string',
-        ];
-    }
+    // public function messages(): array
+    // {
+    //     return [
+    //         'title.required' => 'Title is required',
+    //         'title.string' => 'Title must be a string',
+    //         'url.required' => 'URL is required',
+    //         'url.url' => 'URL must be a valid URL',
+    //         'domain.required' => 'Domain is required',
+    //         'domain.string' => 'Domain must be a string',
+    //     ];
+    // }
 
     /**
      * Handle a failed validation attempt.

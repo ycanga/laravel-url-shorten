@@ -11,9 +11,7 @@
     <main class="main">
         <!-- Hero Section -->
         <section id="hero" class="hero section">
-
             <div class="container" data-aos="fade-up" data-aos-delay="100">
-
                 <div class="row align-items-center">
                     <div class="col-lg-5">
                         <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
@@ -21,11 +19,9 @@
                                 <i class="bi bi-gear-fill me-2"></i>
                                 @lang('home/home.motto')
                             </div>
-
                             <h3 class="mb-4">
                                 {!! __('home/home.short_desc') !!}
                             </h3>
-
                             <div class="card rounded">
                                 <div class="card-body p-3">
                                     <div class="mb-3">
@@ -35,21 +31,27 @@
                                             placeholder="Enter your URL here" aria-label="Enter your URL here"
                                             aria-describedby="button-addon2" @keyup.enter="sendRequest" id="url">
                                     </div>
-
                                     <div class="mb-3">
                                         <label for="domain" class="form-label"> <i
                                                 class="fa-solid fa-wand-magic-sparkles"></i>
                                             @lang('home/home.domain_label')
                                         </label>
-                                        <select v-model="domain" id="domain" class="form-control p-2">
+                                        {{-- <select v-model="domain" id="domain" class="form-control p-2">
                                             <option :value="appUrl" selected>@{{ appUrl }}</option>
+                                        </select> --}}
+                                        {{-- @dd($userDomains) --}}
+                                        <select v-model="domain" id="domain" class="form-control p-2">
+                                            @foreach ($userDomains as $userDomain)
+                                                <option :value="'{{ $userDomain->domain }}'">
+                                                    {{ $userDomain->domain }}
+                                                </option>
+                                            @endforeach
+                                            {{-- <option :value="appUrl" selected>@{{ appUrl }}</option> --}}
                                         </select>
-
                                     </div>
                                     <div v-if="responseMessage" v-html="responseMessage"
                                         class="alert alert-info mt-3 text-start" role="alert">
                                     </div>
-
                                     <div class="hero-buttons">
                                         <button @click="sendRequest" class="btn btn-primary me-0 me-sm-2 mx-1"
                                             :disabled="isLoading">
@@ -66,7 +68,6 @@
                     <div class="col-lg-6">
                         <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
                             <img src="assets/img/illustration-1.webp" alt="Hero Image" class="img-fluid">
-
                             <div class="customers-badge">
                                 <div class="customer-avatars">
                                     <img src="assets/img/avatar-1.webp" alt="Customer 1" class="avatar">
@@ -489,10 +490,4 @@
 @endsection
 
 @section('scripts')
-    <script>
-        window.Laravel = {
-            appUrl: "{{ env('APP_URL') }}",
-            locale: "{{ app()->getLocale() }}"
-        };
-    </script>
 @endsection

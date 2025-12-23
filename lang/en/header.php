@@ -6,4 +6,6 @@ return [
     'pricing' => 'Pricing',
     'contact' => 'Contact',
     'login' => 'Login',
+    'dashboard' => 'Dashboard',
+    'logout' => 'Logout',
 ];

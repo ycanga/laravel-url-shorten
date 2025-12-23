@@ -31,4 +31,11 @@ return [
         'title' => 'Have a question? Check out the FAQ',
         'desc' => 'If you have any questions, you can check out the frequently asked questions.',
     ],
+
+    'shorten' =>[
+        'created' => 'URL created successfully',
+        'creation_failed' => 'Failed to create shortened URL',
+        'not_found' => 'Shortened URL not found',
+        'found' => 'Shortened URL found',
+    ],
 ];

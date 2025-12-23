@@ -6,4 +6,7 @@ return [
     'pricing' => 'Fiyatlandırma',
     'contact' => 'İletişim',
     'login' => 'Giriş Yap',
+    'dashboard' => 'Yönetim Paneli',
+    'logout' => 'Çıkış Yap',
+
 ];
