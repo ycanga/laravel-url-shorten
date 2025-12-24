@@ -234,7 +234,7 @@
                 return;
             }
 
-            fetch("{{ route('api.keys.store') }}", {
+            fetch("/api-keys", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
