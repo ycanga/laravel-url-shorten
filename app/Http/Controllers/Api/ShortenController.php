@@ -21,20 +21,34 @@ class ShortenController extends Controller
             $shortUrl = $this->generateShortUrl();
 
             $userId = null;
-            if(request()->is('api/*')) {
-                $plainKey = request()->header('Authorization');
+            if (request()->is('api/*')) {
+                $authHeader = $request->header('Authorization');
+
+                if (!$authHeader) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => 'Authorization header eksik.'
+                    ], 401);
+                }
+
+                $plainKey = trim(str_replace('Bearer ', '', $authHeader));
                 $apiKeyHash = hash('sha256', $plainKey);
-                $apiKey = ApiKeys::where('key', $apiKeyHash)->with('user')->first();
-                if (!$apiKey || !$apiKey->is_active) {
+
+                $apiKey = ApiKeys::where('key', $apiKeyHash)
+                    ->where('is_active', true)
+                    ->with('user')
+                    ->first();
+
+                if (!$apiKey) {
                     return response()->json([
                         'status' => 'error',
                         'message' => __('api/api.invalid_api_key'),
                     ], 401);
-                } 
+                }
 
                 $userId = $apiKey->user->id ?? null;
             }
-            
+
             AllUrls::create([
                 'title' => $request->title,
                 'url' => $request->url,
@@ -49,7 +63,7 @@ class ShortenController extends Controller
                 'message' => __('home/home.shorten.created'),
                 'data' => [
                     'title' => $request->title,
-                    'short_url' => $request->domain .'/'. $shortUrl,
+                    'short_url' => $request->domain . '/' . $shortUrl,
                 ],
             ], 200);
         } catch (\Exception $e) {
@@ -71,7 +85,7 @@ class ShortenController extends Controller
     {
         try {
             $url = AllUrls::where('short_url', $shortUrl)->first();
-            
+
             if (!$url) {
                 return response()->json([
                     'status' => 'error',
