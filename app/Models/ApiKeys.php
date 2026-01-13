@@ -15,4 +15,9 @@ class ApiKeys extends Model
     protected $casts = [
         'last_used_at' => 'datetime',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

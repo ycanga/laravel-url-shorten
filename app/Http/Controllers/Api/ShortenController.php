@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\StoreShortenRequest;
 use App\Models\AllUrls;
 use App\Http\Controllers\FunctionsTrait;
+use App\Models\ApiKeys;
 
 class ShortenController extends Controller
 {
@@ -18,13 +19,28 @@ class ShortenController extends Controller
 
         try {
             $shortUrl = $this->generateShortUrl();
+
+            $userId = null;
+            if(request()->is('api/*')) {
+                $plainKey = request()->header('Authorization');
+                $apiKeyHash = hash('sha256', $plainKey);
+                $apiKey = ApiKeys::where('key', $apiKeyHash)->with('user')->first();
+                if (!$apiKey || !$apiKey->is_active) {
+                    return response()->json([
+                        'status' => 'error',
+                        'message' => __('api/api.invalid_api_key'),
+                    ], 401);
+                } 
+
+                $userId = $apiKey->user->id ?? null;
+            }
             
-            $url = AllUrls::create([
+            AllUrls::create([
                 'title' => $request->title,
                 'url' => $request->url,
                 'short_url' => $shortUrl,
                 'channel' => request()->is('api/*') ? 'api' : 'web' ?? null,
-                'user_id' => auth()->id() ?? $this->getUserIp(),
+                'user_id' => $userId ?? request()->ip(),
             ]);
 
             //! Dönen domain kontrol edilmeli.
